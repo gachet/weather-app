@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, session, url_for, redirect
+from flask_bootstrap import Bootstrap
 from urllib.request import urlopen
 import json
 
 app = Flask(__name__)
+Bootstrap(app)
 
 @app.route("/")
 def index():
