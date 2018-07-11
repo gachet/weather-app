@@ -1,16 +1,15 @@
-import sqlite3
-from flask import g
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
-DATABASE = 'database.db'
+db = SQLAlchemy()
 
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db
+app = Flask(__name__)
 
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/tcd55/Documents/weather-app/database.db'
+
+
+class Temperatures(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    timestamp = db.Column(db.DateTime,default=datetime.utcnow)
+    temperatures = db.Column(db.String(20))

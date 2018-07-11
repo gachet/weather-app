@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 from flask_bootstrap import Bootstrap
+from models import db, Temperatures
 import datetime
 from urllib.request import urlopen
 import json
@@ -16,7 +17,11 @@ def index():
 	data = json.load(json_obj)
 	temperature = data['current_observation']['temperature_string']
 	icon = data['current_observation']['icon_url']
+	uglytime = datetime.datetime.now()
 	time = datetime.datetime.now().strftime('%B %d, %Y at %H:%M:%S')
+	temprecord = Temperatures(timestamp=uglytime,temperatures=temperature)
+	db.session.add(temprecord)
+	db.session.commit
 	return render_template("base.html", temperature=temperature, icon=icon, time=time)
 
 
