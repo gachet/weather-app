@@ -16,7 +16,7 @@ def index():
 	data = json.load(json_obj)
 	temperature = data['current_observation']['temperature_string']
 	icon = data['current_observation']['icon_url']
-	time = datetime.datetime.now()
+	time = datetime.datetime.now().strftime('%B %d %Y - %H:%M:%S')
 	return render_template("base.html", temperature=temperature, icon=icon, time=time)
 
 
