@@ -7,7 +7,14 @@
 		    <h1>Ithaca</h1>
 		    <img src="{{ icon }}" />
 		    <p>{{ temperature }}</p>
+		    <button class="btn btn-primary" onclick="myFunction()">Reload page</button>
 	    </div>
     </div>
 </div>
+
+<script>
+function myFunction() {
+    location.reload();
+}
+</script>
 {% endblock %}
