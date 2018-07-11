@@ -14,7 +14,8 @@ def index():
 	json_obj = urlopen(url)
 	data = json.load(json_obj)
 	temperature = data['current_observation']['temperature_string']
-	return render_template("base.html", temperature=temperature)
+	icon = data['current_observation']['icon_url']
+	return render_template("base.html", temperature=temperature, icon=icon)
 
 
 # Default port:
