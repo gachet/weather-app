@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 from flask_bootstrap import Bootstrap
+import datetime
 from urllib.request import urlopen
 import json
 
@@ -15,7 +16,8 @@ def index():
 	data = json.load(json_obj)
 	temperature = data['current_observation']['temperature_string']
 	icon = data['current_observation']['icon_url']
-	return render_template("base.html", temperature=temperature, icon=icon)
+	time = datetime.datetime.now()
+	return render_template("base.html", temperature=temperature, icon=icon, time=time)
 
 
 # Default port:
