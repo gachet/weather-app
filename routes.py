@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 	api_key = str(open("api.txt", "r").read().splitlines())
-	elements = ["http://api.wunderground.com/api/",api_key[2:17],"/conditions/q/NY/Ithaca.json"]
+	elements = ["http://api.wunderground.com/api/",api_key[2:18],"/conditions/q/NY/Ithaca.json"]
 	url = "".join(elements)
 	json_obj = urlopen(url)
 	data = json.load(json_obj)
