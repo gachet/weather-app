@@ -1,24 +1,23 @@
 {% extends "bootstrap/base.html" %}
 {% block title %}Weather app{% endblock %}
 {% block styles %}
-{{super()}}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	{{super()}}
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 {% block content %}
-<div class="jumbotron">
-    <div class="container">
-		    <h1>It is <img src="{{ icon }}" /> in Ithaca</h1>
-		    <small>{{ time }}</small>
-		    <p class="temperature">{{ temperature }}</p>
-		    <a href="#1" class="btn btn-primary" onclick="myFunction()"><i class="fas fa-sync-alt"></i> Reload page</a>
-    </div>
-</div>
-
-<script>
-function myFunction() {
-    location.reload();
-}
-</script>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>It is <img src="{{ icon }}" /> in Ithaca</h1>
+			<small>As of {{ time }}</small>
+			<p class="temperature">{{ temperature }}</p>
+			<a href="#1" class="btn btn-primary" onclick="myFunction()"><i class="fas fa-sync-alt"></i> Reload page</a>
+		</div>
+	</div>
+	<script>
+	function myFunction() {
+	location.reload();
+	}
+	</script>
 {% endblock %}
